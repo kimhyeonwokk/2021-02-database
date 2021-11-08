@@ -11,7 +11,6 @@ const pool = mysql.createPool(
     queueLimit: 0
   }
 );
-
 // async / await 사용
 const promisePool = pool.promise();
 // 외부에서 사용 가능하게 export를 이용
