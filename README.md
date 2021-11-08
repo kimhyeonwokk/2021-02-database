@@ -42,8 +42,6 @@ __Grade__: Student 학년
 __Admission__: Student 입학날짜  
 __Email__: Student 이메일        
 
-## <span style="color:skyblue">테이블 설명</span>
-
 ---------------------------------------
 ---------------------------------------
 
