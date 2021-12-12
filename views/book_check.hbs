@@ -1,0 +1,70 @@
+<form method="post">
+  <td style="border: none; margin-left: 20px;">
+    <!-- button name delBtn -->
+    <button
+        style="margin-left: 20px;"
+        name="booking"
+        type="submit"
+        value="booking"
+        formaction="/booking/book_check">
+        예약 페이지로 이동
+    </button>
+</td>
+<div class="frame">
+    <h1>로그인시 확인 가능</h1>
+    <form id="deparment" method="post" action='/booking/book_check'>
+        <div class="id">
+            <input id="id" name="id" type="text" required placeholder="아이디">
+        </div>
+        <div class="pwd">
+            <input id="passwd" name='password' type="password" required placeholder="비밀번호">
+        </div>
+            <button class='btn' type="submit" name='login' value='login'>로그인</button>
+        </form>
+</div>
+<h1>{{ title1 }}</h1>
+<table>
+    <tr>
+        <td>항공편번호</td>
+        <td>날짜</td>
+        <td>LEG_NUMBER</td>
+        <td>출발공항</td>
+        <td>출발시간</td>
+        <td>도착공항</td>
+        <td>도착시간</td>
+        <td>이름</td>
+        <td>전화번호</td>
+        <td>좌석번호</td>
+    </tr>
+    {{#each time_table}}
+        <form method="post">
+            <input type="hidden" name="flight_number" value="{{FLIGHT_NUMBER}}">
+            <input type="hidden" name="leg_number" value="{{Leg_number}}">
+            <input type="hidden" name="date" value="{{DATE}}">
+            <input type="hidden" name="seat_number" value="{{SEAT_NUMBER}}">
+            <tr>
+                <td>{{FLIGHT_NUMBER}}</td>
+                <td>{{DATE}}</td>
+                <td>{{Leg_number}}</td>
+                <td>{{DNAME}}</td>
+                <td>{{SCHEDULED_DEPARTURE_TIME}}</td>
+                <td>{{ANAME}}</td>
+                <td>{{SCHEDULED_ARRIVAL_TIME}}</td>
+                <td>{{CUSTOMER_NAME}}</td>
+                <td>{{CUSTOMER_PHONE}}</td>
+                <td>{{SEAT_NUMBER}}</td>    
+                <td style="border: none; margin-left: 10px;">
+                    <!-- button name delBtn -->
+                    <button
+                        style="margin-left: 10px;"
+                        name='delBtn'
+                        type="submit"
+                        value="제거"
+                        formaction="/booking/book_check">
+                        예약취소
+                    </button>
+                </td>
+            </tr>
+        </form>
+    {{/each}}
+</table>

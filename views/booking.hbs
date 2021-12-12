@@ -1,0 +1,67 @@
+<style type="text/css">
+      table{border-collapse:collapse}
+      th,td{border:1px solid black; width: 110px; height: 30px}
+</style>
+
+<form method="post">
+  <td style="border: none; margin-left: 20px;">
+    <!-- button name delBtn -->
+    <button
+        style="margin-left: 20px;"
+        name="booking_check"
+        type="submit"
+        value="booking_check"
+        formaction="/booking">
+        예약 확인페이지로 이동
+    </button>
+</td>
+
+<h1>{{ title1 }}</h1>
+<table>
+    <tr>
+        <td>항공편번호</td>
+        <td>날짜</td>
+        <td>LEG_NUMBER</td>
+        <td>출발공항</td>
+        <td>출발시간</td>
+        <td>도착공항</td>
+        <td>도착시간</td>
+        <td>Fare code</td>
+        <td>총 비용</td>
+        <td>수화물 제한</td>
+        <td>남은좌석</td>
+    </tr>
+    {{#each time_table}}
+        <form method="post">
+            <input type="hidden" name="flight_number" value="{{FLIGHT_NUMBER}}">
+            <input type="hidden" name="fare_code" value="{{Fare_code}}">
+            <input type="hidden" name="leg_number" value="{{Leg_number}}">
+            <input type="hidden" name="date" value="{{DATE}}">
+            <input type="hidden" name="number_of_available_seats" value="{{Number_of_available_seats}}">
+            <tr>
+                <td>{{FLIGHT_NUMBER}}</td>
+                <td>{{DATE}}</td>
+                <td>{{Leg_number}}</td>
+                <td>{{DNAME}}</td>
+                <td>{{SCHEDULED_DEPARTURE_TIME}}</td>
+                <td>{{ANAME}}</td>
+                <td>{{SCHEDULED_ARRIVAL_TIME}}</td>
+                <td>{{Fare_code}}</td>
+                <td>{{Amount}}</td>
+                <td>{{Restrictions}}</td>
+                <td>{{Number_of_available_seats}}</td>
+                <td style="border: none; margin-left: 5px;">
+                <input style="width: 90px;" type="text" name="userid" placeholder="userid"></td>
+                <td style="border: none; margin-left: 5px;">
+                <input style="width: 90px;" type="text" name="userpassword" placeholder="password"></td>
+                <td style="border: none; margin-left: 5px;">
+                <input style="width: 90px;" type="text" name="seatnumber" placeholder="seatnumber"></td>
+                 <td style="border: none; margin-left: 5px;">
+                <input style="width: 90px;" type="text" name="phonenumber" placeholder="phonenumber"></td>
+                <td style="border: none; margin-left: 5px;">
+                <input type="submit" name='reservation' value="예약" formaction="/booking">
+                </td>
+            </tr>
+        </form>
+    {{/each}}
+</table>

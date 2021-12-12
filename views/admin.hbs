@@ -1,0 +1,329 @@
+<form method="post">
+  <td style="border: none; margin-left: 20px;">
+    <!-- button name delBtn -->
+    <button
+        style="margin-left: 20px;"
+        name='modify'
+        type="submit"
+        value="수정으로이동"
+        formaction="/admin">
+        Airport, Airplane, Flight 수정 이동버튼
+    </button>
+</td>
+</form>
+<h1>{{ title1 }}</h1>
+<table>
+    <tr>
+        <td>Airport_code</td>
+        <td>Name</td>
+        <td>City</td>
+        <td>State</td>
+    </tr>
+    {{#each airport}}
+        <form method="post">
+            <tr>
+                <td>{{Airport_code}}</td>
+                <td>{{Name}}</td>
+                <td>{{City}}</td>
+                <td>{{State}}</td>
+                <td style="border: none; margin-left: 10px;">
+                    <!-- button name delBtn -->
+                    <button
+                        style="margin-left: 10px;"
+                        name='delBtn1'
+                        type="submit"
+                        value="{{Airport_code}}"
+                        formaction="/admin">
+                        삭제
+                    </button>
+                </td>
+            </tr>
+        </form>
+    {{/each}}
+</table>
+<h1>AIRPORT DATA 삽입</h1>
+<br>Airport와 Name이 중복되는 것은 삽입 불가능</br>
+<form name="airport" method="post" formaction="/admin">
+    <td>
+        <label for="Airport_code"></label>
+        <input
+            id="Airport_code"
+            name="Airport_code"
+            type="text"
+            required="required"
+            placeholder="Airport_code">
+    </td>
+    <td>
+        <label for="Name"></label>
+        <input id="Name" name="Name" type="text" required="required" placeholder="Name">
+    </td>
+    <td>
+        <label for="City"></label>
+        <input id="City" name="City" type="text" required="required" placeholder="City">
+    </td>
+    <td>
+        <label for="State"></label>
+        <input
+            id="State"
+            name="State"
+            type="text"
+            required="required"
+            placeholder="State">
+    </td>
+    <td>
+        <input type="submit" name="airport_btn" value="airport_insert">
+    </td>
+</form>
+<h1></h1>
+
+<h1>{{ title2 }}</h1>
+<table>
+    <tr>
+        <td>Airplane_id</td>
+        <td>Total_number_of_seats</td>
+        <td>Airplane_type</td>
+    </tr>
+    {{#each airplane}}
+        <form method="post">
+            <tr>
+                <td>{{Airplane_id}}</td>
+                <td>{{Total_number_of_seats}}</td>
+                <td>{{Airplane_type}}</td>
+                <td style="border: none; margin-left: 10px;">
+                    <!-- button name delBtn1 -->
+                    <button
+                        style="margin-left: 10px;"
+                        name='delBtn2'
+                        type="submit"
+                        value="{{Airplane_id}}"
+                        formaction="/admin">
+                        삭제
+                    </button>
+                </td>
+            </tr>
+        </form>
+    {{/each}}
+</table>
+<h1>AIRPLANE DATA 삽입</h1>
+<br>Airplane_id이 중복되는 것, AIRPLANE_TYPE Table에 없는 Type은 삽입 불가능</br>
+<form name="airplane" method="post" action='/admin'>
+    <td>
+        <label for="Airplane_id"></label>
+        <input
+            id="Airplane_id"
+            name="Airplane_id"
+            type="text"
+            required="required"
+            placeholder="Airplane_id">
+    </td>
+    <td>
+        <label for="Total_number_of_seats"></label>
+        <input
+            id="Total_number_of_seats"
+            name="Total_number_of_seats"
+            type="text"
+            required="required"
+            placeholder="Total_number_of_seats">
+    </td>
+    <td>
+        <label for="Airplane_type"></label>
+        <input
+            id="Airplane_type"
+            name="Airplane_type"
+            type="text"
+            required="required"
+            placeholder="Airplane_type">
+    </td>
+    <td>
+        <input type="submit" name="airplane_btn" value="airplane_insert">
+    </td>
+</form>
+
+<h1>{{ title3 }}</h1>
+<table>
+    <tr>
+        <td>Flight_number</td>
+        <td>Airline</td>
+        <td>days</td>
+    </tr>
+    {{#each flight}}
+        <form method="post">
+            <tr>
+                <td>{{Flight_number}}</td>
+                <td>{{Airline}}</td>
+                <td>{{days}}</td>
+                <td style="border: none; margin-left: 10px;">
+                    <!-- button name delBtn1 -->
+                    <button
+                        style="margin-left: 10px;"
+                        name='delBtn3'
+                        type="submit"
+                        value="{{Flight_number}}"
+                        formaction="/admin">
+                        삭제
+                    </button>
+                </td>
+            </tr>
+        </form>
+    {{/each}}
+</table>
+<h1>FLIGHT DATA 삽입</h1>
+<br>Flight_number 이 중복되는 삽입 불가능</br>
+<form name="flight" method="post" action='/admin'>
+    <td>
+        <label for="Flight_number"></label>
+        <input
+            id="Flight_number"
+            name="Flight_number"
+            type="text"
+            required="required"
+            placeholder="Flight_number">
+    </td>
+    <td>
+        <label for="Airline"></label>
+        <input
+            id="Airline"
+            name="Airline"
+            type="text"
+            required="required"
+            placeholder="Airline">
+    </td>
+    <td>
+        <label for="days"></label>
+        <input id="days" name="days" type="text" required="required" placeholder="days">
+    </td>
+    <td>
+        <input type="submit" name="flight_btn" value="flight_insert">
+    </td>
+</form>
+<h1>{{ title4 }}</h1>
+<table>
+    <tr>
+        <td>Flight_number</td>
+        <td>Leg_number</td>
+        <td>Departure_airport_code</td>
+        <td>Scheduled_departure_time</td>
+        <td>Arrival_airport_code</td>
+        <td>Scheduled_arrival_time</td>
+    </tr>
+    {{#each flight_leg}}
+        <form method="post">
+            <tr>
+                <td>{{Flight_number}}</td>
+                <td>{{Leg_number}}</td>
+                <td>{{Departure_airport_code}}</td>
+                <td>{{Scheduled_departure_time}}</td>
+                <td>{{Arrival_airport_code}}</td>
+                <td>{{Scheduled_arrival_time}}</td>
+            </tr>
+        </form>
+    {{/each}}
+</table>
+
+<h1>{{ title5 }}</h1>
+<table>
+    <tr>
+        <td>Flight_number</td>
+        <td>Leg_number</td>
+        <td>Date</td>
+        <td>Number_of_available_seats</td>
+        <td>Airplane_id</td>
+        <td>Departure_airport_code</td>
+        <td>Departure_time</td>
+        <td>Arrival_airport_code</td>
+        <td>Arrival_time</td>
+    </tr>
+    {{#each leg_instance}}
+        <form method="post">
+            <tr>
+                <td>{{Flight_number}}</td>
+                <td>{{Leg_number}}</td>
+                <td>{{Date}}</td>
+                <td>{{Number_of_available_seats}}</td>
+                <td>{{Airplane_id}}</td>
+                <td>{{Departure_airport_code}}</td>
+                <td>{{Departure_time}}</td>
+                <td>{{Arrival_airport_code}}</td>
+                <td>{{Arrival_time}}</td>
+            </tr>
+        </form>
+    {{/each}}
+</table>
+
+<h1>{{ title6 }}</h1>
+<table>
+    <tr>
+        <td>Flight_number</td>
+        <td>Fare_code</td>
+        <td>Amount</td>
+        <td>Restrictions</td>
+    </tr>
+    {{#each fare}}
+        <form method="post">
+            <tr>
+                <td>{{Flight_number}}</td>
+                <td>{{Fare_code}}</td>
+                <td>{{Amount}}</td>
+                <td>{{Restrictions}}</td>
+            </tr>
+        </form>
+    {{/each}}
+</table>
+
+<h1>{{ title7 }}</h1>
+<table>
+    <tr>
+        <td>Airplane_type_name</td>
+        <td>Max_seats</td>
+        <td>Company</td>
+    </tr>
+    {{#each airplane_type}}
+        <form method="post">
+            <tr>
+                <td>{{Airplane_type_name}}</td>
+                <td>{{Max_seats}}</td>
+                <td>{{Company}}</td>
+            </tr>
+        </form>
+    {{/each}}
+</table>
+
+<h1>{{ title8 }}</h1>
+<table>
+    <tr>
+        <td>Airplane_type_name</td>
+        <td>Airport_code</td>
+    </tr>
+    {{#each can_land}}
+        <form method="post">
+            <tr>
+                <td>{{Airplane_type_name}}</td>
+                <td>{{Airport_code}}</td>
+            </tr>
+        </form>
+    {{/each}}
+</table>
+
+<h1>{{ title9 }}</h1>
+<table>
+    <tr>
+        <td>Flight_number</td>
+        <td>Leg_number</td>
+        <td>Date</td>
+        <td>Seat_number</td>
+        <td>Customer_name</td>
+        <td>Customer_phone</td>
+    </tr>
+    {{#each seat_reservation}}
+        <form method="post">
+            <tr>
+                <td>{{Flight_number}}</td>
+                <td>{{Leg_number}}</td>
+                <td>{{Date}}</td>
+                <td>{{Seat_number}}</td>
+                <td>{{Customer_name}}</td>
+                <td>{{Customer_phone}}</td>
+            </tr>
+        </form>
+    {{/each}}
+</table>

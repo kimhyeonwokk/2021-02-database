@@ -1,0 +1,84 @@
+<form method="post">
+  <td style="border: none; margin-left: 20px;">
+    <!-- button name delBtn -->
+    <button
+        style="margin-left: 20px;"
+        name='delins'
+        type="submit"
+        value="삽입 삭제로이동"
+        formaction="/admin">
+        Airport, Airplane, Flight 삭제,삽입 이동버튼
+    </button>
+</td>
+</form>
+<h1>{{ title1 }}</h1>
+<table>
+  <tr>
+    <td>Airport_code</td>
+    <td>Name</td>
+    <td>City</td>
+    <td>State</td>
+  </tr>
+  {{#each airport}}
+    <form method="post">
+        <input type="hidden" name="airport_code" value="{{Airport_code}}">
+        <tr>
+            <td>{{Airport_code}}</td>
+            <td><input type="text" name="name" value="{{Name}}"></td>
+            <td>{{City}}</td>
+            <td>{{State}}</td>
+            <td style="border: none; margin-left: 10px;">
+            <input type="submit" name='modify_airport' value="수정" formaction="/admin/update">
+            </td>
+        </tr>
+    </form>
+  {{/each}}
+  같은 이름으로 변경 불가능
+</table>
+
+<h1>{{ title2 }}</h1>
+<table>
+  <tr>
+    <td>Airplane_id</td>
+    <td>Total_number_of_seats</td>
+    <td>Airplane_type</td>
+  </tr>
+  {{#each airplane}}
+    <form method="post">
+        <input type="hidden" name="airplane_id" value="{{Airplane_id}}">
+        <tr>
+            <td>{{Airplane_id}}</td>
+            <td><input type="text" name="total_number_of_seats" value={{Total_number_of_seats}}></td>
+            <td><input type="text" name="airplane_type" value={{Airplane_type}}></td>
+            <!--formaction 속성을 활용하여 입력한 값을 넘겨짐-->
+            <td style="border: none; margin-left: 10px;">
+            <input type="submit" name='modify_airplane' value="수정" formaction="/admin/update">
+            </td>
+        </tr>
+    </form>
+  {{/each}}
+  좌석수는 제한없음, type은 Airplane_type에 있는 것으로만 변경가능
+</table>
+<h1>{{ title3 }}</h1>
+<table>
+  <tr>
+    <td>Flight_number</td>
+    <td>Airline</td>
+    <td>days</td>
+  </tr>
+  {{#each flight}}
+    <form method="post">
+        <input type="hidden" name="flight_number" value="{{Flight_number}}">
+        <tr>
+            <td>{{Flight_number}}</td>
+            <td><input type="text" name="airline" value={{Airline}}></td>
+            <td><input type="text" name="days" value={{days}}></td>
+            <!--formaction 속성을 활용하여 입력한 값을 넘겨짐-->
+            <td style="border: none; margin-left: 10px;">
+            <input type="submit" name='modify_flight' value="수정" formaction="/admin/update">
+            </td>
+        </tr>
+    </form>
+  {{/each}}
+  Airline 변경 제한 없음, Day는 Sun, Mon, Tue, Wed, Tur, Fri, Sat 로만 변경가능
+</table>
